@@ -30,14 +30,9 @@
         <p class="error-message" id="creditError"></p>
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
-        <select id="numOfCourses" required>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4" selected>4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
+        <input type="number" id="numOfCourses" min="1" max="20" value="4" required>
+        <p class="error-message" id="numOfCoursesError"></p>
+
         <button type="submit">Next</button>
       </form>
     </section>

@@ -18,16 +18,16 @@
       <h2>Calculate Your CGPA</h2>
       <form id="cgpaForm">
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
-        <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.5" required>
+        <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.50" required>
         <p class="error-message" id="cgpaError"></p>
 
         <label for="creditsCompleted">Credits Completed (Before this semester):</label>
-        <input type="number" id="creditsCompleted" min="1" max="150" placeholder="Enter completed credits" required>
+        <input type="number" id="creditsCompleted" min="1" max="150" placeholder="e.g., 120" required>
         <p class="error-message" id="creditError"></p>
-        <small class="help-text">Hint: You can find your total completed credits on your transcript or student portal.</small>
+        <small class="help-text">Hint: Check your transcript for completed credits.</small>
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
-        <input type="number" id="numOfCourses" min="1" max="20" value="4" required>
+        <input type="number" id="numOfCourses" min="1" max="20" placeholder="e.g., 4" required>
         <p class="error-message" id="numOfCoursesError"></p>
 
         <button type="submit">Next</button>
@@ -42,25 +42,26 @@
 
     <section id="result-section" class="hidden">
       <h2>Your CGPA is: <span id="calculatedCgpa">0.00</span></h2>
+      <p class="success-message hidden" id="successMessage">Calculation Successful!</p>
       <button id="recalculate">Start Over</button>
     </section>
 
     <section id="how-it-works">
       <h2>How It Works</h2>
       <p>Your CGPA is calculated using the formula: <strong>Total Points / Total Credits</strong>.</p>
-      <p>Steps:</p>
       <ol>
-        <li>We multiply the GPA of each course by its credit to get the total points for that course.</li>
-        <li>The sum of all points is divided by the sum of all credits to get your updated CGPA.</li>
+        <li>Multiply each course's GPA by its credit to get the total points for that course.</li>
+        <li>Add all total points and divide by the total credits to get your updated CGPA.</li>
       </ol>
-      <p><strong>Example:</strong></p>
-      <p>If you have a current CGPA of 3.50 with 90 completed credits and you take 3 new courses with the following GPA and credit:</p>
-      <ul>
-        <li>Course 1: GPA 4.0, Credit 3</li>
-        <li>Course 2: GPA 3.7, Credit 2</li>
-        <li>Course 3: GPA 3.0, Credit 4</li>
-      </ul>
-      <p>Your updated CGPA would be: <strong>3.46</strong></p>
+      <div class="example-section">
+        <p><strong>Example:</strong> If your current CGPA is 3.50 with 90 completed credits and you take 3 new courses:</p>
+        <ul>
+          <li>Course 1: GPA 4.0, Credit 3</li>
+          <li>Course 2: GPA 3.7, Credit 2</li>
+          <li>Course 3: GPA 3.0, Credit 4</li>
+        </ul>
+        <p>Your updated CGPA will be <strong>3.46</strong>.</p>
+      </div>
     </section>
   </main>
 

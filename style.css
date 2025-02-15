@@ -86,3 +86,12 @@ footer a {
 footer a:hover {
   color: #0056b3;
 }
+
+.gpa-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.gpa-group input {
+  width: 45%;
+}

@@ -25,7 +25,8 @@
         </select>
 
         <label for="customScale">Custom Scale (Optional):</label>
-        <input type="number" id="customScale" min="1" placeholder="e.g., 12">
+        <input type="number" id="customScale" min="1" max="20" placeholder="e.g., 12">
+        <p class="error-message" id="customScaleError"></p>
 
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
         <input type="number" id="currentCgpa" step="0.01" min="0" max="10" placeholder="e.g., 3.50" required>

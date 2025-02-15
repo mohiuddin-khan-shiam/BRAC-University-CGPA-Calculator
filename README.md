@@ -89,15 +89,6 @@ This project is licensed under the **MIT License**. See the [LICENSE](https://gi
 
 ---
 
-## Author 🤵🏻‍💻  
-
-**S. M. Mohiuddin Khan Shiam**  
-- 🔗 [Website](https://mohiuddin-khan-shiam.github.io/)  
-- 🔗 [GitHub](https://github.com/mohiuddin-khan-shiam)  
-- 🔗 [LinkedIn](https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/)
-
----
-
 ## Contribution 🤝  
 
 Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit a pull request.  

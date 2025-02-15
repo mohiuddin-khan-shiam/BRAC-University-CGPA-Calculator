@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const customScaleContainer = document.getElementById("customScaleContainer");
   const customScaleInput = document.getElementById("customScale");
 
+  // Helper: Set focus on an element if exists
+  function setFocus(selector) {
+    const el = document.querySelector(selector);
+    if (el) el.focus();
+  }
+
   // Initialize Theme (Persistent via localStorage)
   let isDarkMode = localStorage.getItem("theme") === "light-mode" ? false : true;
   setTheme();
@@ -27,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.setAttribute("aria-pressed", isDarkMode ? "true" : "false");
   }
 
-  // Toggle visibility of custom scale input based on selected option
+  // Toggle visibility of custom scale input based on selection
   cgpaScaleSelect.addEventListener("change", () => {
     if (cgpaScaleSelect.value === "other") {
       customScaleContainer.classList.remove("hidden");
@@ -38,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Clear all error messages
+  // Clear error messages in the form
   function clearErrorMessages() {
     document.querySelectorAll(".error-message").forEach((el) => {
       el.textContent = "";
@@ -46,14 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Display an error message for a given element
+  // Display an error message for a specific field
   function showError(elementId, message) {
     const errorElement = document.getElementById(elementId);
     errorElement.textContent = message;
     errorElement.classList.add("visible");
   }
 
-  // Create course input fields dynamically based on the number of courses
+  // Dynamically generate course input fields based on number of courses
   function createCourseInputs(numOfCourses, cgpaScale) {
     gpaInputs.innerHTML = "";
     for (let i = 0; i < numOfCourses; i++) {
@@ -74,13 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Handle form submission to move from basic input to course details
+  // Handle submission of the initial form to proceed to course details
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     clearErrorMessages();
 
     let cgpaScale;
-    // Use the custom scale if "Other" is selected; otherwise, use the preset value.
+    // Use the custom scale if "Other" is selected
     if (cgpaScaleSelect.value === "other") {
       const customScale = parseInt(customScaleInput.value, 10);
       if (isNaN(customScale) || customScale < 1 || customScale > 20) {
@@ -100,31 +106,30 @@ document.addEventListener("DOMContentLoaded", () => {
       showError("cgpaError", `CGPA must be between 0 and ${cgpaScale}.`);
       return;
     }
-
     if (isNaN(creditsCompleted) || creditsCompleted < 1 || creditsCompleted > 250) {
       showError("creditError", "Credits must be between 1 and 250.");
       return;
     }
-
     if (isNaN(numOfCourses) || numOfCourses < 1 || numOfCourses > 20) {
       showError("numOfCoursesError", "Please enter a number between 1 and 20 for the number of courses.");
       return;
     }
 
-    // Generate dynamic course input fields
+    // Generate the course input fields
     createCourseInputs(numOfCourses, cgpaScale);
 
-    // Transition to the course details section
+    // Transition to the course details section and set focus for accessibility
     inputSection.classList.add("hidden");
     gpaSection.classList.remove("hidden");
+    setFocus("#courseGpa0");
   });
 
-  // Calculate CGPA based on current data and course inputs
+  // Calculate CGPA when user clicks "Calculate CGPA"
   document.getElementById("calculateCgpa").addEventListener("click", () => {
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
     const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value, 10);
     let totalCredits = creditsCompleted;
-    let totalPoints = currentCgpa * totalCredits;
+    let totalPoints = currentCgpa * creditsCompleted;
     let newCredits = 0;
     let validInput = true;
 
@@ -152,23 +157,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const newCgpa = (totalPoints / (totalCredits + newCredits)).toFixed(2);
     calculatedCgpa.textContent = newCgpa;
 
-    // Trigger a subtle success animation
+    // Add a subtle success animation
     calculatedCgpa.classList.add("success");
     setTimeout(() => calculatedCgpa.classList.remove("success"), 1500);
 
-    // Transition to the result section
+    // Transition to the result section and move focus to the result
     gpaSection.classList.add("hidden");
     resultSection.classList.remove("hidden");
+    setFocus("#calculatedCgpa");
   });
 
-  // Reset the calculator for a new calculation
+  // Reset the calculator to start a new calculation
   document.getElementById("recalculate").addEventListener("click", () => {
     inputSection.classList.remove("hidden");
     resultSection.classList.add("hidden");
     form.reset();
     gpaInputs.innerHTML = "";
-    // Hide custom scale container and update ARIA attribute
     customScaleContainer.classList.add("hidden");
     customScaleContainer.setAttribute("aria-hidden", "true");
+    // Set focus back to the first input of the initial form
+    setFocus("#currentCgpa");
   });
 });

@@ -25,7 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const cgpaScale = parseInt(document.getElementById("cgpaScale").value);
+    let cgpaScale = parseInt(document.getElementById("cgpaScale").value);
+    const customScale = parseInt(document.getElementById("customScale").value);
+    if (!isNaN(customScale) && customScale > 0) {
+      cgpaScale = customScale;
+    }
+
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
     const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
     const numOfCourses = parseInt(document.getElementById("numOfCourses").value);
@@ -38,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (isNaN(creditsCompleted) || creditsCompleted < 1) {
-      showError("creditError", "Credits must be a positive number.");
+    if (isNaN(creditsCompleted) || creditsCompleted < 1 || creditsCompleted > 250) {
+      showError("creditError", "Credits must be between 1 and 250.");
       return;
     }
 
@@ -50,11 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gpaInputs.innerHTML = ""; // Clear previous GPA inputs
 
-    // Dynamically generate GPA and Credit input fields for each course
+    // Dynamically generate GPA, credit, and optional course name input fields for each course
     for (let i = 0; i < numOfCourses; i++) {
       const gpaGroup = document.createElement("div");
       gpaGroup.classList.add("gpa-group");
       gpaGroup.innerHTML = `
+        <label>Course ${i + 1} Name (Optional): <input type="text" placeholder="e.g., Math 101"></label>
         <label>Course ${i + 1} GPA: <input type="number" min="0" max="${cgpaScale}" step="0.01" required></label>
         <label>Credit: <input type="number" min="0.5" step="0.5" value="3" required></label>
       `;
@@ -74,8 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let validInput = true;
 
     document.querySelectorAll(".gpa-group").forEach((group) => {
-      const gpa = parseFloat(group.children[0].children[0].value);
-      const credit = parseFloat(group.children[1].children[0].value);
+      const gpa = parseFloat(group.children[1].children[0].value);
+      const credit = parseFloat(group.children[2].children[0].value);
 
       if (isNaN(gpa) || gpa < 0 || isNaN(credit) || credit <= 0) {
         validInput = false;

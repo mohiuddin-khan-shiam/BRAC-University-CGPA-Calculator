@@ -17,12 +17,19 @@
     <section id="input-section">
       <h2>Calculate Your CGPA</h2>
       <form id="cgpaForm">
+        <label for="cgpaScale">Select CGPA Scale:</label>
+        <select id="cgpaScale" required>
+          <option value="4" selected>4.0 Scale</option>
+          <option value="5">5.0 Scale</option>
+          <option value="10">10.0 Scale</option>
+        </select>
+
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
         <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.50" required>
         <p class="error-message" id="cgpaError"></p>
 
         <label for="creditsCompleted">Credits Completed (Before this semester):</label>
-        <input type="number" id="creditsCompleted" min="1" max="150" placeholder="e.g., 120" required>
+        <input type="number" id="creditsCompleted" min="1" placeholder="e.g., 120" required>
         <p class="error-message" id="creditError"></p>
         <small class="help-text">Hint: Check your transcript for completed credits.</small>
 
@@ -35,7 +42,7 @@
     </section>
 
     <section id="gpa-section" class="hidden">
-      <h2>Enter GPA and Credit for Each Course</h2>
+      <h2>Enter Course Details</h2>
       <div id="gpaInputs"></div>
       <button id="calculateCgpa">Calculate CGPA</button>
     </section>
@@ -50,8 +57,9 @@
       <h2>How It Works</h2>
       <p>Your CGPA is calculated using the formula: <strong>Total Points / Total Credits</strong>.</p>
       <ol>
-        <li>Multiply each course's GPA by its credit to get the total points for that course.</li>
-        <li>Add all total points and divide by the total credits to get your updated CGPA.</li>
+        <li>Select your CGPA scale (4.0, 5.0, or 10.0).</li>
+        <li>Enter your current CGPA and completed credits.</li>
+        <li>Provide GPA and credit details for each course taken this semester.</li>
       </ol>
       <div class="example-section">
         <p><strong>Example:</strong> If your current CGPA is 3.50 with 90 completed credits and you take 3 new courses:</p>

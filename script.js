@@ -93,6 +93,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const newCgpa = (totalPoints / (totalCredits + newCredits)).toFixed(2);
     calculatedCgpa.textContent = newCgpa;
 
+    // Add success animation or color feedback
+    calculatedCgpa.classList.add("success");
+    setTimeout(() => calculatedCgpa.classList.remove("success"), 1500);
+
     gpaSection.classList.add("hidden");
     resultSection.classList.remove("hidden");
   });
@@ -101,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputSection.classList.remove("hidden");
     resultSection.classList.add("hidden");
     form.reset();
-    gpaInputs.innerHTML = ""; // Clear GPA inputs for next calculation
+    gpaInputs.innerHTML = ""; // Clear GPA inputs for the next calculation
   });
 
   function showError(elementId, message) {

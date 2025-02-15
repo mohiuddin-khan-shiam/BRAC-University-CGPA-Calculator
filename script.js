@@ -12,25 +12,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    numOfCourses = parseInt(document.getElementById("numOfCourses").value);
-    gpaInputs.innerHTML = ""; // Clear previous GPA inputs if they exist
 
-    // Dynamically generate GPA input fields for each course
+    const coursesCompleted = parseInt(document.getElementById("coursesCompleted").value);
+    const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
+
+    if (isNaN(coursesCompleted) && isNaN(creditsCompleted)) {
+      alert("Please enter either completed courses or completed credits.");
+      return;
+    }
+
+    if (!isNaN(coursesCompleted) && !isNaN(creditsCompleted)) {
+      alert("Please enter only one: either completed courses or completed credits.");
+      return;
+    }
+
+    gpaInputs.innerHTML = ""; // Clear previous GPA inputs if they exist
+    numOfCourses = parseInt(document.getElementById("numOfCourses").value);
+
+    // Dynamically generate GPA and Credit input fields for each course
     for (let i = 0; i < numOfCourses; i++) {
       const gpaGroup = document.createElement("div");
       gpaGroup.classList.add("gpa-group");
-      
-      const label = document.createElement("label");
-      label.textContent = `Course ${i + 1} GPA:`;
-      const input = document.createElement("input");
-      input.type = "number";
-      input.min = "0";
-      input.max = "4";
-      input.step = "0.01";
-      input.required = true;
-      
-      gpaGroup.appendChild(label);
-      gpaGroup.appendChild(input);
+
+      const gpaLabel = document.createElement("label");
+      gpaLabel.textContent = `Course ${i + 1} GPA:`;
+      const gpaInput = document.createElement("input");
+      gpaInput.type = "number";
+      gpaInput.min = "0";
+      gpaInput.max = "4";
+      gpaInput.step = "0.01";
+      gpaInput.required = true;
+
+      const creditLabel = document.createElement("label");
+      creditLabel.textContent = `Credit:`;
+      const creditInput = document.createElement("input");
+      creditInput.type = "number";
+      creditInput.min = "0.5";
+      creditInput.step = "0.5";
+      creditInput.required = true;
+
+      gpaGroup.appendChild(gpaLabel);
+      gpaGroup.appendChild(gpaInput);
+      gpaGroup.appendChild(creditLabel);
+      gpaGroup.appendChild(creditInput);
       gpaInputs.appendChild(gpaGroup);
     }
 
@@ -41,25 +65,32 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("calculateCgpa").addEventListener("click", () => {
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
     const coursesCompleted = parseInt(document.getElementById("coursesCompleted").value);
-    let totalPoints = currentCgpa * coursesCompleted;
+    const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
+
+    let totalCredits = isNaN(creditsCompleted) ? coursesCompleted * 3 : creditsCompleted;
+    let totalPoints = currentCgpa * totalCredits;
+    let newCredits = 0;
     let validInput = true;
 
-    const gpaValues = document.querySelectorAll("#gpaInputs input");
-    gpaValues.forEach((input) => {
-      const gpa = parseFloat(input.value);
-      if (isNaN(gpa) || gpa < 0 || gpa > 4) {
+    const gpaGroups = document.querySelectorAll(".gpa-group");
+    gpaGroups.forEach((group) => {
+      const gpa = parseFloat(group.children[1].value);
+      const credit = parseFloat(group.children[3].value);
+
+      if (isNaN(gpa) || gpa < 0 || gpa > 4 || isNaN(credit) || credit <= 0) {
         validInput = false;
       } else {
-        totalPoints += gpa;
+        totalPoints += gpa * credit;
+        newCredits += credit;
       }
     });
 
     if (!validInput) {
-      alert("Please enter valid GPA values between 0 and 4.");
+      alert("Please enter valid GPA values (0-4) and positive credit values.");
       return;
     }
 
-    const newCgpa = (totalPoints / (coursesCompleted + numOfCourses)).toFixed(2);
+    const newCgpa = (totalPoints / (totalCredits + newCredits)).toFixed(2);
     calculatedCgpa.textContent = newCgpa;
 
     gpaSection.classList.add("hidden");
@@ -70,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputSection.classList.remove("hidden");
     resultSection.classList.add("hidden");
     form.reset();
-    gpaInputs.innerHTML = ""; // Clear GPA inputs for next calculation
+    gpaInputs.innerHTML = ""; // Clear GPA inputs for the next calculation
   });
 
   themeToggle.addEventListener("click", () => {

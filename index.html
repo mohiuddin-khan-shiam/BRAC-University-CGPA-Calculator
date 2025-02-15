@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CGPA Calculator</title>
+  <title>CGPA Calculator – Update Your CGPA Instantly</title>
+  <meta name="description" content="Calculate your updated CGPA easily using our interactive CGPA Calculator. Enter your current CGPA, credits, and course details to see your updated CGPA.">
+  <meta name="keywords" content="CGPA Calculator, GPA Calculator, CGPA, GPA, Academic Calculator">
+  <meta name="author" content="S. M. Mohiuddin Khan Shiam">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/favicon.ico">
 </head>
 <body>
   <header>
     <h1>CGPA Calculator</h1>
-    <button id="themeToggle">Switch to Light Mode</button>
+    <button id="themeToggle" aria-label="Toggle dark/light mode" aria-pressed="true">Switch to Light Mode</button>
   </header>
 
   <main>
     <section id="input-section">
       <h2>Calculate Your CGPA</h2>
-      <form id="cgpaForm">
+      <form id="cgpaForm" novalidate>
         <label for="cgpaScale">Select CGPA Scale:</label>
         <select id="cgpaScale">
           <option value="4" selected>4.0 Scale</option>
@@ -25,21 +28,21 @@
         </select>
 
         <label for="customScale">Custom Scale (Optional):</label>
-        <input type="number" id="customScale" min="1" max="20" placeholder="e.g., 12">
-        <p class="error-message" id="customScaleError"></p>
+        <input type="number" id="customScale" min="1" max="20" placeholder="e.g., 12" aria-describedby="customScaleError">
+        <p class="error-message" id="customScaleError" role="alert" aria-live="assertive"></p>
 
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
-        <input type="number" id="currentCgpa" step="0.01" min="0" max="10" placeholder="e.g., 3.50" required>
-        <p class="error-message" id="cgpaError"></p>
+        <input type="number" id="currentCgpa" step="0.01" min="0" max="10" placeholder="e.g., 3.50" required aria-describedby="cgpaError">
+        <p class="error-message" id="cgpaError" role="alert" aria-live="assertive"></p>
 
         <label for="creditsCompleted">Credits Completed (Before this semester):</label>
-        <input type="number" id="creditsCompleted" min="1" max="250" placeholder="e.g., 120" required>
-        <p class="error-message" id="creditError"></p>
+        <input type="number" id="creditsCompleted" min="1" max="250" placeholder="e.g., 120" required aria-describedby="creditError">
+        <p class="error-message" id="creditError" role="alert" aria-live="assertive"></p>
         <small class="help-text">Hint: Check your transcript for completed credits.</small>
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
-        <input type="number" id="numOfCourses" min="1" max="20" placeholder="e.g., 4" required>
-        <p class="error-message" id="numOfCoursesError"></p>
+        <input type="number" id="numOfCourses" min="1" max="20" placeholder="e.g., 4" required aria-describedby="numOfCoursesError">
+        <p class="error-message" id="numOfCoursesError" role="alert" aria-live="assertive"></p>
 
         <button type="submit">Next</button>
       </form>
@@ -47,13 +50,13 @@
 
     <section id="gpa-section" class="hidden">
       <h2>Enter Course Details</h2>
-      <div id="gpaInputs"></div>
+      <div id="gpaInputs" aria-live="polite"></div>
       <button id="calculateCgpa">Calculate CGPA</button>
     </section>
 
     <section id="result-section" class="hidden">
       <h2>Your CGPA is: <span id="calculatedCgpa">0.00</span></h2>
-      <p class="success-message hidden" id="successMessage">Calculation Successful!</p>
+      <p class="success-message hidden" id="successMessage" role="alert" aria-live="assertive">Calculation Successful!</p>
       <button id="recalculate">Start Over</button>
     </section>
 
@@ -78,10 +81,10 @@
   </main>
 
   <footer>
-    <p>Created by <a href="https://mohiuddin-khan-shiam.github.io/" target="_blank">S. M. Mohiuddin Khan Shiam</a></p>
+    <p>Created by <a href="https://mohiuddin-khan-shiam.github.io/" target="_blank" rel="noopener noreferrer">S. M. Mohiuddin Khan Shiam</a></p>
     <p>
-      <a href="https://github.com/mohiuddin-khan-shiam/CGPA-Calculator" target="_blank">GitHub</a> | 
-      <a href="https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/mohiuddin-khan-shiam/CGPA-Calculator" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+      <a href="https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </p>
   </footer>
 

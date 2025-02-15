@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const gpaInputs = document.getElementById("gpaInputs");
   const calculatedCgpa = document.getElementById("calculatedCgpa");
   const themeToggle = document.getElementById("themeToggle");
+  const cgpaScaleSelect = document.getElementById("cgpaScale");
+  const customScaleContainer = document.getElementById("customScaleContainer");
+  const customScaleInput = document.getElementById("customScale");
 
   // Initialize Theme (Persistent via localStorage)
   let isDarkMode = localStorage.getItem("theme") === "light-mode" ? false : true;
@@ -23,6 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.textContent = isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode";
     themeToggle.setAttribute("aria-pressed", isDarkMode ? "true" : "false");
   }
+
+  // Toggle visibility of custom scale input based on selected option
+  cgpaScaleSelect.addEventListener("change", () => {
+    if (cgpaScaleSelect.value === "other") {
+      customScaleContainer.classList.remove("hidden");
+    } else {
+      customScaleContainer.classList.add("hidden");
+    }
+  });
 
   // Clear all error messages
   function clearErrorMessages() {
@@ -65,19 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     clearErrorMessages();
 
-    // Retrieve and validate form values
-    let cgpaScale = parseInt(document.getElementById("cgpaScale").value, 10);
-    const customScaleValue = document.getElementById("customScale").value;
-    if (customScaleValue) {
-      const customScale = parseInt(customScaleValue, 10);
-      if (!isNaN(customScale)) {
-        if (customScale > 0 && customScale <= 20) {
-          cgpaScale = customScale;
-        } else if (customScale > 20) {
-          showError("customScaleError", "Custom scale must be between 1 and 20.");
-          return;
-        }
+    let cgpaScale;
+    // Use the custom scale if "Other" is selected; otherwise, use the preset value.
+    if (cgpaScaleSelect.value === "other") {
+      const customScale = parseInt(customScaleInput.value, 10);
+      if (isNaN(customScale) || customScale < 1 || customScale > 20) {
+        showError("customScaleError", "Custom scale must be between 1 and 20.");
+        return;
       }
+      cgpaScale = customScale;
+    } else {
+      cgpaScale = parseInt(cgpaScaleSelect.value, 10);
     }
 
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
@@ -155,5 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resultSection.classList.add("hidden");
     form.reset();
     gpaInputs.innerHTML = "";
+    // Ensure the custom scale container is hidden on reset
+    customScaleContainer.classList.add("hidden");
   });
 });

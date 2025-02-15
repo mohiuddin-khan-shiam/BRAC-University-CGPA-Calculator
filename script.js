@@ -31,8 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
   cgpaScaleSelect.addEventListener("change", () => {
     if (cgpaScaleSelect.value === "other") {
       customScaleContainer.classList.remove("hidden");
+      customScaleContainer.setAttribute("aria-hidden", "false");
     } else {
       customScaleContainer.classList.add("hidden");
+      customScaleContainer.setAttribute("aria-hidden", "true");
     }
   });
 
@@ -165,7 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
     resultSection.classList.add("hidden");
     form.reset();
     gpaInputs.innerHTML = "";
-    // Ensure the custom scale container is hidden on reset
+    // Hide custom scale container and update ARIA attribute
     customScaleContainer.classList.add("hidden");
+    customScaleContainer.setAttribute("aria-hidden", "true");
   });
 });

@@ -72,7 +72,9 @@ input:focus, select:focus {
 
 .error-message {
   color: red;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
   display: none;
 }
 

@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CGPA Calculator – Update Your CGPA Instantly</title>
-  <meta name="description" content="Calculate your updated CGPA easily using our interactive CGPA Calculator. Enter your current CGPA, credits, and course details to see your updated CGPA.">
-  <meta name="keywords" content="CGPA Calculator, GPA Calculator, CGPA, GPA, Academic Calculator">
-  <meta name="author" content="S. M. Mohiuddin Khan Shiam">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/favicon.ico">
+  <meta name="description" content="Calculate your updated CGPA easily using our interactive CGPA Calculator. Enter your current CGPA, credits, and course details to see your updated CGPA." />
+  <meta name="keywords" content="CGPA Calculator, GPA Calculator, CGPA, GPA, Academic Calculator" />
+  <meta name="author" content="S. M. Mohiuddin Khan Shiam" />
+
+  <!-- Open Graph / Social Media Tags -->
+  <meta property="og:title" content="CGPA Calculator – Update Your CGPA Instantly" />
+  <meta property="og:description" content="Calculate your updated CGPA easily using our interactive CGPA Calculator. Enter your current CGPA, credits, and course details to see your updated CGPA." />
+  <meta property="og:image" content="https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/favicon.ico" />
+  <meta property="og:url" content="https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/favicon.ico" />
 </head>
 <body>
   <header>
     <h1>CGPA Calculator</h1>
-    <button id="themeToggle" aria-label="Toggle dark/light mode" aria-pressed="true">Switch to Light Mode</button>
+    <button 
+      id="themeToggle" 
+      aria-label="Toggle dark/light mode" 
+      aria-pressed="true"
+    >
+      Switch to Light Mode
+    </button>
   </header>
 
   <main>
@@ -23,7 +37,7 @@
       <p>
         Our user-friendly tool makes it easy to calculate and update your CGPA. Whether you’re on a standard
         4.0, 5.0, or 10.0 scale—or even a custom scale—this calculator helps you stay on top of your academic
-        performance. 
+        performance.
       </p>
       <p>
         Simply enter your current CGPA, completed credits, and the details of your current semester’s courses.
@@ -46,7 +60,7 @@
           <option value="other">Other</option>
         </select>
 
-        <div id="customScaleContainer" class="hidden">
+        <div id="customScaleContainer" class="hidden" aria-hidden="true">
           <label for="customScale">Enter Custom Scale (1-20):</label>
           <input 
             type="number" 
@@ -55,7 +69,7 @@
             max="20" 
             placeholder="e.g., 12" 
             aria-describedby="customScaleError"
-          >
+          />
           <p 
             class="error-message" 
             id="customScaleError" 
@@ -74,7 +88,7 @@
           placeholder="e.g., 3.50" 
           required 
           aria-describedby="cgpaError"
-        >
+        />
         <p 
           class="error-message" 
           id="cgpaError" 
@@ -91,7 +105,7 @@
           placeholder="e.g., 120" 
           required 
           aria-describedby="creditError"
-        >
+        />
         <p 
           class="error-message" 
           id="creditError" 
@@ -111,7 +125,7 @@
           placeholder="e.g., 4" 
           required 
           aria-describedby="numOfCoursesError"
-        >
+        />
         <p 
           class="error-message" 
           id="numOfCoursesError" 
@@ -119,7 +133,12 @@
           aria-live="assertive"
         ></p>
 
-        <button type="submit">Next</button>
+        <button 
+          type="submit" 
+          aria-label="Go to Course Details Section"
+        >
+          Next
+        </button>
       </form>
     </section>
 
@@ -127,7 +146,12 @@
     <section id="gpa-section" class="hidden">
       <h2>Enter Your Course Details</h2>
       <div id="gpaInputs" aria-live="polite"></div>
-      <button id="calculateCgpa">Calculate CGPA</button>
+      <button 
+        id="calculateCgpa" 
+        aria-label="Calculate your updated CGPA"
+      >
+        Calculate CGPA
+      </button>
     </section>
 
     <!-- Result Section -->
@@ -141,14 +165,16 @@
       >
         Calculation Successful!
       </p>
-      <button id="recalculate">Start Over</button>
+      <button id="recalculate" aria-label="Start a new calculation">
+        Start Over
+      </button>
     </section>
 
     <!-- How It Works Section -->
     <section id="how-it-works">
       <h2>How It Works</h2>
       <p>
-        Your CGPA is calculated using the formula: 
+        Your CGPA is calculated using the formula:
         <strong>Total Points / Total Credits</strong>.
       </p>
       <ol>
@@ -173,6 +199,31 @@
         </ul>
         <p>Your updated CGPA will be <strong>3.46</strong>.</p>
       </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq-section">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <details>
+        <summary>Will this CGPA match my official transcript?</summary>
+        <p>
+          While this calculator uses standard formulas, official transcripts may vary based on your
+          institution's rounding or weighting policies.
+        </p>
+      </details>
+      <details>
+        <summary>Can I see my CGPA in multiple scales?</summary>
+        <p>
+          Absolutely! Simply select a different scale from the dropdown (or enter a custom scale) 
+          and recalculate with your course details.
+        </p>
+      </details>
+      <details>
+        <summary>Is my data stored or shared?</summary>
+        <p>
+          No. All calculations happen locally in your browser, and no data is sent to any server.
+        </p>
+      </details>
     </section>
   </main>
 

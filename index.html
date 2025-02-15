@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BRACU CGPA Calculator</title>
+  <title>CGPA Calculator</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/favicon.ico">
 </head>
 <body class="dark-mode">
   <header>
-    <h1>BRACU CGPA Calculator</h1>
+    <h1>CGPA Calculator</h1>
     <button id="themeToggle">Switch to Light Mode</button>
   </header>
 
@@ -21,7 +21,10 @@
         <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.5" required>
 
         <label for="coursesCompleted">Courses Completed (Before this semester):</label>
-        <input type="number" id="coursesCompleted" min="0" placeholder="e.g., 30" required>
+        <input type="number" id="coursesCompleted" min="0" placeholder="Enter completed courses OR leave this blank if entering credits.">
+
+        <label for="creditsCompleted">Credits Completed (Before this semester):</label>
+        <input type="number" id="creditsCompleted" min="0" placeholder="Enter completed credits OR leave this blank if entering courses.">
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
         <select id="numOfCourses" required>
@@ -38,7 +41,7 @@
     </section>
 
     <section id="gpa-section" class="hidden">
-      <h2>Enter GPA for Each Course</h2>
+      <h2>Enter GPA and Credit for Each Course</h2>
       <div id="gpaInputs"></div>
       <button id="calculateCgpa">Calculate CGPA</button>
     </section>

@@ -106,6 +106,11 @@ select:focus {
   border-color: var(--primary-color);
 }
 
+/* Utility: Hide elements with .hidden class */
+.hidden {
+  display: none;
+}
+
 /* Error & Help Messages */
 .error-message {
   color: var(--error-color);
@@ -143,7 +148,6 @@ section.hidden {
   display: block;
 }
 
-/* Success animation for updated CGPA */
 .success {
   animation: pop 0.5s ease-out;
 }
@@ -235,6 +239,11 @@ footer a:focus {
 
 .gpa-group input {
   width: 100%;
+}
+
+/* Custom Scale Container (for the merged CGPA scale input) */
+#customScaleContainer {
+  margin-top: 10px;
 }
 
 /* Responsive Styles */

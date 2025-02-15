@@ -1,101 +1,111 @@
-# CGPA Calculator 🎓  
-
-[![MIT License](https://img.shields.io/badge/license-MIT-green)](https://github.com/mohiuddin-khan-shiam/CGPA-Calculator/blob/main/LICENSE)
-
-A **CGPA Calculator** built with **HTML, CSS, and JavaScript** that helps students calculate their updated CGPA. It provides accurate results by allowing users to input completed credits and GPA for each course in the current semester, supporting different credit values for courses.
-
-🔗 **[Live Website](https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/)**  
-
 ---
 
-## Features ✨  
-- **Light/Dark Mode Toggle** for better user experience.  
-- **Dynamic GPA and Credit Input** for each course in the current semester.  
-- **Accurate CGPA Calculation**, accounting for courses with different credit values.  
-- **Responsive Design**, ensuring usability on all devices.  
-- **User-Friendly Interface**, making it easy for students to calculate their CGPA quickly.  
+# CGPA Calculator
 
----
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
+[![GitHub Repo](https://img.shields.io/badge/GitHub-mohiuddin--khan--shiam/CGPA--Calculator-blue.svg)](https://github.com/mohiuddin-khan-shiam/CGPA-Calculator)
 
-## How to Use 🛠️  
+The **CGPA Calculator** is a user-friendly web tool that allows students to calculate their updated Cumulative Grade Point Average (CGPA) by entering their current CGPA, completed credits, and details for the current semester's courses. It supports standard scales (4.0, 5.0, 10.0) as well as a custom scale option.
 
-1. **Input your Current CGPA and Completed Credits:**  
-   - Enter your current CGPA (between 0 and 4) and the total number of completed credits.  
+## Table of Contents
 
-2. **Select the Number of Courses for the Current Semester:**  
-   - Choose how many courses you are taking this semester.  
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Repository Structure](#repository-structure)
+- [License](#license)
+- [Contributing](#contributing)
+- [Screenshots](#screenshots)
+- [Contact](#contact)
 
-3. **Enter GPA and Credit for Each Course:**  
-   - Provide the GPA (between 0 and 4) and the credit value for each course in the current semester. The default credit value is 3, but you can adjust it if your course has a different credit.  
+## Features
 
-4. **Calculate Your CGPA:**  
-   - The calculator will compute and display your updated CGPA based on the provided inputs.
+- **Dynamic Input Forms:**  
+  Easily input your current CGPA, completed credits, and details for multiple courses (GPA and credit per course).
+- **Customizable CGPA Scale:**  
+  Choose from preset scales (4.0, 5.0, 10.0) or enter your own custom scale.
+- **Dark/Light Mode Toggle:**  
+  Seamlessly switch between dark and light themes.
+- **Responsive Design:**  
+  Optimized for both desktop and mobile devices.
+- **Accessibility Enhancements:**  
+  Includes ARIA attributes, keyboard navigation support, and a skip-to-content link.
+- **Real-time Feedback:**  
+  Immediate error messages and subtle animations to confirm successful calculations.
 
----
+## Demo
 
-## Example Calculation 🔢  
+You can view the live demo of the CGPA Calculator on GitHub Pages:  
+[https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/](https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/)
 
-**Input:**  
-- Current CGPA: `3.50`  
-- Completed Credits: `90`  
-- 3 new courses with the following GPA and Credit:  
-  - Course 1: GPA `4.0`, Credit `3`  
-  - Course 2: GPA `3.7`, Credit `2`  
-  - Course 3: GPA `3.0`, Credit `4`  
+## Installation
 
-**Calculation:**  
-1. **Total Points from Previous Credits:**  
-   \[
-   3.50 \times 90 = 315
-   \]
-2. **Points from Current Semester:**  
-   \[
-   (4.0 \times 3) + (3.7 \times 2) + (3.0 \times 4) = 12 + 7.4 + 12 = 31.4
-   \]
-3. **Total Credits:**  
-   \[
-   90 + 9 = 99
-   \]
-4. **New CGPA:**  
-   \[
-   \text{New CGPA} = \frac{315 + 31.4}{99} = 3.50
-   \]
+1. **Clone the repository:**
 
----
-
-## Installation & Development 🖥️  
-
-To run this project locally:  
-
-1. Clone the repository:  
-   ```
+   ```bash
    git clone https://github.com/mohiuddin-khan-shiam/CGPA-Calculator.git
+   cd CGPA-Calculator
    ```
-2. Open `index.html` in your browser.
+
+2. **Open the project:**
+
+   You can simply open `index.html` in your web browser. No additional build steps or dependencies are required.
+
+## Usage
+
+1. **Enter your details:**  
+   Fill in your current CGPA, the total number of credits completed, and the number of courses for the current semester.
+
+2. **Select your CGPA scale:**  
+   Choose a preset scale or select "Other" to enter a custom scale.
+
+3. **Input course details:**  
+   Enter GPA and credit information for each course. Optionally, you can add a course name.
+
+4. **Calculate:**  
+   Click "Next" to generate course fields, then "Calculate CGPA" to view your updated CGPA.
+
+5. **Reset:**  
+   Use the "Start Over" button if you want to perform another calculation.
+
+## Repository Structure
+
+```
+CGPA-Calculator/
+├── index.html         # Main HTML file for the application
+├── style.css          # CSS file for styling the website
+├── script.js          # JavaScript file for dynamic behavior and form validation
+├── favicon.ico        # Favicon for the website
+├── dark-mode.png      # Screenshot/icon representing dark mode
+├── light-mode.png     # Screenshot/icon representing light mode
+├── LICENSE            # MIT License
+└── README.md          # This README file
+```
+
+## License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
+
+## Screenshots
+
+### Light Mode
+
+![Light Mode](light-mode.png)
+
+### Dark Mode
+
+![Dark Mode](dark-mode.png)
+
+## Contact
+
+Created by **S. M. Mohiuddin Khan Shiam**.  
+For any questions or feedback, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/) or [GitHub](https://github.com/mohiuddin-khan-shiam).
 
 ---
 
-## Technologies Used 💻  
-
-- **HTML5**  
-- **CSS3**  
-- **JavaScript**  
-
----
-
-## License 🔖  
-
-This project is licensed under the **MIT License**. See the [LICENSE](https://github.com/mohiuddin-khan-shiam/CGPA-Calculator/blob/main/LICENSE) file for details.
-
----
-
-## Contribution 🤝  
-
-Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit a pull request.  
-
----
-
-### Star the repository ⭐ if you found it helpful! 😊  
-
----
-
+Feel free to adjust this README as needed to better match your project's specifics or additional details you’d like to share.

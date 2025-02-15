@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/favicon.ico">
 </head>
-<body class="dark-mode">
+<body>
   <header>
     <h1>CGPA Calculator</h1>
     <button id="themeToggle">Switch to Light Mode</button>
@@ -21,10 +21,10 @@
         <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.5" required>
 
         <label for="coursesCompleted">Courses Completed (Before this semester):</label>
-        <input type="number" id="coursesCompleted" min="0" placeholder="Enter completed courses OR leave this blank if entering credits.">
+        <input type="number" id="coursesCompleted" min="0" placeholder="Enter completed courses or leave blank if entering credits.">
 
         <label for="creditsCompleted">Credits Completed (Before this semester):</label>
-        <input type="number" id="creditsCompleted" min="0" placeholder="Enter completed credits OR leave this blank if entering courses.">
+        <input type="number" id="creditsCompleted" min="0" placeholder="Enter completed credits or leave blank if entering courses.">
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
         <select id="numOfCourses" required>
@@ -37,6 +37,7 @@
         </select>
 
         <button type="submit">Next</button>
+        <p class="error-message" id="formError"></p>
       </form>
     </section>
 

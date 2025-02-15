@@ -203,7 +203,7 @@ section.hidden {
   }
 }
 
-/* How It Works Section */
+/* How It Works & Example Section */
 #how-it-works {
   max-width: 700px;
   margin-top: 40px;
@@ -263,7 +263,7 @@ footer a:focus {
   color: var(--primary-color-hover);
 }
 
-/* GPA Input Groups (Now 3 columns on larger screens) */
+/* GPA Input Groups (3 columns on larger screens) */
 .gpa-group {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -280,9 +280,72 @@ footer a:focus {
   width: 100%;
 }
 
-/* Custom Scale Container (for the merged CGPA scale input) */
+/* Custom Scale Container */
 #customScaleContainer {
   margin-top: 10px;
+}
+
+/* FAQ Section */
+#faq-section {
+  max-width: 700px;
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--section-bg-light);
+  color: #333;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+body.dark-mode #faq-section {
+  background-color: var(--section-bg-dark);
+  color: var(--dark-text);
+}
+
+#faq-section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+/* Details & Summary for FAQ */
+#faq-section details {
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease;
+}
+
+body.dark-mode #faq-section details {
+  background-color: #333;
+}
+
+#faq-section summary {
+  font-weight: bold;
+  outline: none;
+}
+
+/* Remove default marker and add a custom arrow */
+#faq-section summary::-webkit-details-marker {
+  display: none;
+}
+#faq-section summary::before {
+  content: "➤ ";
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+#faq-section details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+#faq-section details p {
+  margin: 10px 0 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 /* Responsive Styles */
@@ -292,7 +355,8 @@ footer a:focus {
     grid-template-columns: 1fr;
   }
 
-  #how-it-works {
+  #how-it-works,
+  #faq-section {
     font-size: 0.9rem;
     padding: 15px;
   }

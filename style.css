@@ -46,7 +46,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 70vh;
   padding: 20px;
 }
 
@@ -71,8 +70,27 @@ input, select {
   display: none;
 }
 
+.error-message.visible {
+  display: block;
+}
+
 section.hidden {
   display: none;
+}
+
+#how-it-works {
+  max-width: 600px;
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+#how-it-works h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
 }
 
 footer {
@@ -101,4 +119,13 @@ footer a:hover {
 
 .gpa-group input {
   width: 45%;
+}
+
+@media (max-width: 768px) {
+  .gpa-group {
+    flex-direction: column;
+  }
+  .gpa-group input {
+    width: 100%;
+  }
 }

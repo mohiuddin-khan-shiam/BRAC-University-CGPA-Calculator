@@ -57,11 +57,16 @@ form, #gpaInputs {
   max-width: 400px;
 }
 
-input, select {
+input {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 .error-message {
@@ -72,6 +77,12 @@ input, select {
 
 .error-message.visible {
   display: block;
+}
+
+.help-text {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: -10px;
 }
 
 section.hidden {
@@ -146,7 +157,7 @@ footer a:hover {
     padding: 15px;
   }
   
-  input, select {
+  input {
     width: 100%;
   }
 }

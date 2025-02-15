@@ -19,12 +19,15 @@
       <form id="cgpaForm">
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
         <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.5" required>
+        <p class="error-message" id="cgpaError"></p>
 
         <label for="coursesCompleted">Courses Completed (Before this semester):</label>
         <input type="number" id="coursesCompleted" min="0" placeholder="Enter completed courses or leave blank if entering credits.">
+        <p class="error-message" id="courseError"></p>
 
         <label for="creditsCompleted">Credits Completed (Before this semester):</label>
         <input type="number" id="creditsCompleted" min="0" placeholder="Enter completed credits or leave blank if entering courses.">
+        <p class="error-message" id="creditError"></p>
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
         <select id="numOfCourses" required>
@@ -35,9 +38,7 @@
           <option value="5">5</option>
           <option value="6">6</option>
         </select>
-
         <button type="submit">Next</button>
-        <p class="error-message" id="formError"></p>
       </form>
     </section>
 
@@ -50,6 +51,12 @@
     <section id="result-section" class="hidden">
       <h2>Your CGPA is: <span id="calculatedCgpa">0.00</span></h2>
       <button id="recalculate">Start Over</button>
+    </section>
+
+    <section id="how-it-works">
+      <h2>How It Works</h2>
+      <p>Your CGPA is calculated as: <strong>Total Points / Total Credits</strong>.</p>
+      <p>We multiply the GPA of each course by its credit to get the total points. The total points divided by the total credits gives your new CGPA.</p>
     </section>
   </main>
 

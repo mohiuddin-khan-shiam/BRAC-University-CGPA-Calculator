@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <label for="courseGpa${i}">Course ${i + 1} GPA:
           <input type="number" id="courseGpa${i}" min="0" max="${cgpaScale}" step="0.01" required>
         </label>
-        <label for="courseCredit${i}">Credit:
+        <label for="courseCredit${i}">Course ${i + 1} Credit:
           <input type="number" id="courseCredit${i}" min="0.5" step="0.5" value="3" required>
         </label>
       `;

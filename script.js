@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gpaGroup.classList.add("gpa-group");
       gpaGroup.innerHTML = `
         <label>Course ${i + 1} GPA: <input type="number" min="0" max="4" step="0.01" required></label>
-        <label>Credit: <input type="number" min="0.5" step="0.5" required></label>
+        <label>Credit: <input type="number" min="0.5" step="0.5" value="3" required></label>
       `;
       gpaInputs.appendChild(gpaGroup);
     }

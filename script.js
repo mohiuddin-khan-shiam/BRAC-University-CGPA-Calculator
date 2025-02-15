@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
-    const coursesCompleted = parseInt(document.getElementById("coursesCompleted").value);
     const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
     const numOfCourses = parseInt(document.getElementById("numOfCourses").value);
 
@@ -38,18 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (isNaN(coursesCompleted) && isNaN(creditsCompleted)) {
-      showError("courseError", "Please enter either completed courses or completed credits.");
-      return;
-    }
-
-    if (!isNaN(coursesCompleted) && !isNaN(creditsCompleted)) {
-      showError("courseError", "Please enter only one: either completed courses or completed credits.");
+    if (isNaN(creditsCompleted) || creditsCompleted < 1 || creditsCompleted > 150) {
+      showError("creditError", "Credits must be between 1 and 150.");
       return;
     }
 
     if (isNaN(numOfCourses) || numOfCourses < 1 || numOfCourses > 20) {
-      showError("numOfCoursesError", "Please enter a number between 1 and 20.");
+      showError("numOfCoursesError", "Please enter a number between 1 and 20 for the number of courses.");
       return;
     }
 
@@ -72,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("calculateCgpa").addEventListener("click", () => {
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
-    const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value) || 0;
-    let totalCredits = creditsCompleted || parseInt(document.getElementById("coursesCompleted").value) * 3;
+    const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
+    let totalCredits = creditsCompleted;
     let totalPoints = currentCgpa * totalCredits;
     let newCredits = 0;
     let validInput = true;

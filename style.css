@@ -104,26 +104,6 @@ button:focus {
   margin-bottom: 15px;
 }
 
-/* (Optional) CTA Button styles (not used since button removed) */
-/*
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-}
-.cta-button:hover,
-.cta-button:focus {
-  background-color: var(--primary-color-hover);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);
-}
-*/
-
 /* Main Content */
 main {
   display: flex;

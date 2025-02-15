@@ -83,6 +83,7 @@ input:focus {
   font-size: 0.85rem;
   color: #666;
   margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 section.hidden {
@@ -134,30 +135,32 @@ footer a:hover {
 }
 
 .gpa-group {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
+  align-items: center;
+}
+
+.gpa-group label {
+  display: flex;
+  flex-direction: column;
 }
 
 .gpa-group input {
-  width: 45%;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .gpa-group {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
-  
-  .gpa-group input {
+
+  input {
     width: 100%;
   }
-  
+
   #how-it-works {
     font-size: 0.9rem;
     padding: 15px;
-  }
-  
-  input {
-    width: 100%;
   }
 }

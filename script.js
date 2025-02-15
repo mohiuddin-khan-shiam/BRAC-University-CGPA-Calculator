@@ -13,9 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     numOfCourses = parseInt(document.getElementById("numOfCourses").value);
-    gpaInputs.innerHTML = "";
+    gpaInputs.innerHTML = ""; // Clear previous GPA inputs if they exist
 
+    // Dynamically generate GPA input fields for each course
     for (let i = 0; i < numOfCourses; i++) {
+      const gpaGroup = document.createElement("div");
+      gpaGroup.classList.add("gpa-group");
+      
       const label = document.createElement("label");
       label.textContent = `Course ${i + 1} GPA:`;
       const input = document.createElement("input");
@@ -24,8 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
       input.max = "4";
       input.step = "0.01";
       input.required = true;
-      gpaInputs.appendChild(label);
-      gpaInputs.appendChild(input);
+      
+      gpaGroup.appendChild(label);
+      gpaGroup.appendChild(input);
+      gpaInputs.appendChild(gpaGroup);
     }
 
     inputSection.classList.add("hidden");
@@ -64,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputSection.classList.remove("hidden");
     resultSection.classList.add("hidden");
     form.reset();
+    gpaInputs.innerHTML = ""; // Clear GPA inputs for next calculation
   });
 
   themeToggle.addEventListener("click", () => {

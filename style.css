@@ -29,7 +29,7 @@ main {
   height: 80vh;
 }
 
-form {
+form, #gpaInputs {
   display: flex;
   flex-direction: column;
   gap: 15px;

@@ -17,6 +17,23 @@
   </header>
 
   <main>
+    <!-- Intro Section with a larger explanation -->
+    <section id="intro-section">
+      <h2>Welcome to the Ultimate CGPA Calculator</h2>
+      <p>
+        Our user-friendly tool makes it easy to calculate and update your CGPA. Whether you’re on a standard
+        4.0, 5.0, or 10.0 scale—or even a custom scale—this calculator helps you stay on top of your academic
+        performance. 
+      </p>
+      <p>
+        Simply enter your current CGPA, completed credits, and the details of your current semester’s courses.
+        In just a few clicks, you’ll get an accurate, updated CGPA. No data is stored on our servers; everything
+        is calculated right in your browser for maximum privacy. Let’s get started!
+      </p>
+      <a href="#input-section" class="cta-button">Start Calculating</a>
+    </section>
+
+    <!-- Main Input Section -->
     <section id="input-section">
       <h2>Calculate Your CGPA</h2>
       <form id="cgpaForm" novalidate>
@@ -28,51 +45,127 @@
           <option value="10">10.0 Scale</option>
           <option value="other">Other</option>
         </select>
+
         <div id="customScaleContainer" class="hidden">
           <label for="customScale">Enter Custom Scale (1-20):</label>
-          <input type="number" id="customScale" min="1" max="20" placeholder="e.g., 12" aria-describedby="customScaleError">
-          <p class="error-message" id="customScaleError" role="alert" aria-live="assertive"></p>
+          <input 
+            type="number" 
+            id="customScale" 
+            min="1" 
+            max="20" 
+            placeholder="e.g., 12" 
+            aria-describedby="customScaleError"
+          >
+          <p 
+            class="error-message" 
+            id="customScaleError" 
+            role="alert" 
+            aria-live="assertive"
+          ></p>
         </div>
 
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
-        <input type="number" id="currentCgpa" step="0.01" min="0" max="10" placeholder="e.g., 3.50" required aria-describedby="cgpaError">
-        <p class="error-message" id="cgpaError" role="alert" aria-live="assertive"></p>
+        <input 
+          type="number" 
+          id="currentCgpa" 
+          step="0.01" 
+          min="0" 
+          max="10" 
+          placeholder="e.g., 3.50" 
+          required 
+          aria-describedby="cgpaError"
+        >
+        <p 
+          class="error-message" 
+          id="cgpaError" 
+          role="alert" 
+          aria-live="assertive"
+        ></p>
 
         <label for="creditsCompleted">Credits Completed (Before this semester):</label>
-        <input type="number" id="creditsCompleted" min="1" max="250" placeholder="e.g., 120" required aria-describedby="creditError">
-        <p class="error-message" id="creditError" role="alert" aria-live="assertive"></p>
-        <small class="help-text">Hint: Check your transcript for completed credits.</small>
+        <input 
+          type="number" 
+          id="creditsCompleted" 
+          min="1" 
+          max="250" 
+          placeholder="e.g., 120" 
+          required 
+          aria-describedby="creditError"
+        >
+        <p 
+          class="error-message" 
+          id="creditError" 
+          role="alert" 
+          aria-live="assertive"
+        ></p>
+        <small class="help-text">
+          Hint: Check your transcript for completed credits.
+        </small>
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
-        <input type="number" id="numOfCourses" min="1" max="20" placeholder="e.g., 4" required aria-describedby="numOfCoursesError">
-        <p class="error-message" id="numOfCoursesError" role="alert" aria-live="assertive"></p>
+        <input 
+          type="number" 
+          id="numOfCourses" 
+          min="1" 
+          max="20" 
+          placeholder="e.g., 4" 
+          required 
+          aria-describedby="numOfCoursesError"
+        >
+        <p 
+          class="error-message" 
+          id="numOfCoursesError" 
+          role="alert" 
+          aria-live="assertive"
+        ></p>
 
         <button type="submit">Next</button>
       </form>
     </section>
 
+    <!-- GPA Input Section -->
     <section id="gpa-section" class="hidden">
-      <h2>Enter Course Details</h2>
+      <h2>Enter Your Course Details</h2>
       <div id="gpaInputs" aria-live="polite"></div>
       <button id="calculateCgpa">Calculate CGPA</button>
     </section>
 
+    <!-- Result Section -->
     <section id="result-section" class="hidden">
       <h2>Your CGPA is: <span id="calculatedCgpa">0.00</span></h2>
-      <p class="success-message hidden" id="successMessage" role="alert" aria-live="assertive">Calculation Successful!</p>
+      <p 
+        class="success-message hidden" 
+        id="successMessage" 
+        role="alert" 
+        aria-live="assertive"
+      >
+        Calculation Successful!
+      </p>
       <button id="recalculate">Start Over</button>
     </section>
 
+    <!-- How It Works Section -->
     <section id="how-it-works">
       <h2>How It Works</h2>
-      <p>Your CGPA is calculated using the formula: <strong>Total Points / Total Credits</strong>.</p>
+      <p>
+        Your CGPA is calculated using the formula: 
+        <strong>Total Points / Total Credits</strong>.
+      </p>
       <ol>
-        <li>Select your CGPA scale by choosing a preset option or selecting "Other" to enter a custom scale.</li>
-        <li>Enter your current CGPA and completed credits.</li>
-        <li>Provide GPA, credit details, and optional course names for each course taken this semester.</li>
+        <li>
+          Select your CGPA scale by choosing a preset option or selecting "Other" to enter a custom scale.
+        </li>
+        <li>
+          Enter your current CGPA and completed credits.
+        </li>
+        <li>
+          Provide GPA, credit details, and optional course names for each course taken this semester.
+        </li>
       </ol>
       <div class="example-section">
-        <p><strong>Example:</strong> If your current CGPA is 3.50 with 90 completed credits and you take 3 new courses:</p>
+        <p>
+          <strong>Example:</strong> If your current CGPA is 3.50 with 90 completed credits and you take 3 new courses:
+        </p>
         <ul>
           <li>Course 1: GPA 4.0, Credit 3</li>
           <li>Course 2: GPA 3.7, Credit 2</li>
@@ -84,10 +177,32 @@
   </main>
 
   <footer>
-    <p>Created by <a href="https://mohiuddin-khan-shiam.github.io/" target="_blank" rel="noopener noreferrer">S. M. Mohiuddin Khan Shiam</a></p>
     <p>
-      <a href="https://github.com/mohiuddin-khan-shiam/CGPA-Calculator" target="_blank" rel="noopener noreferrer">GitHub</a> | 
-      <a href="https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      Created by 
+      <a 
+        href="https://mohiuddin-khan-shiam.github.io/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        S. M. Mohiuddin Khan Shiam
+      </a>
+    </p>
+    <p>
+      <a 
+        href="https://github.com/mohiuddin-khan-shiam/CGPA-Calculator" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a> 
+      | 
+      <a 
+        href="https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
     </p>
   </footer>
 

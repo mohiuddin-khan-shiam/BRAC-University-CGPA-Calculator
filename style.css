@@ -62,6 +62,7 @@ input {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%;
 }
 
 input:focus {
@@ -90,8 +91,19 @@ section.hidden {
   display: none;
 }
 
+.success-message {
+  color: green;
+  font-size: 1rem;
+  display: none;
+  margin: 10px 0;
+}
+
+.success-message.visible {
+  display: block;
+}
+
 #how-it-works {
-  max-width: 600px;
+  max-width: 700px;
   margin-top: 40px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -110,6 +122,17 @@ body.dark-mode #how-it-works {
   text-align: center;
   margin-bottom: 10px;
   font-size: 1.8rem;
+}
+
+.example-section {
+  background-color: #f1f1f1;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+body.dark-mode .example-section {
+  background-color: #333;
 }
 
 ul, ol {
@@ -155,12 +178,12 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 
-  input {
-    width: 100%;
-  }
-
   #how-it-works {
     font-size: 0.9rem;
     padding: 15px;
+  }
+
+  input {
+    width: 100%;
   }
 }

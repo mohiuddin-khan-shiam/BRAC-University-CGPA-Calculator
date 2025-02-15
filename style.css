@@ -136,6 +136,7 @@ footer a:hover {
   .gpa-group {
     flex-direction: column;
   }
+  
   .gpa-group input {
     width: 100%;
   }
@@ -143,5 +144,9 @@ footer a:hover {
   #how-it-works {
     font-size: 0.9rem;
     padding: 15px;
+  }
+  
+  input, select {
+    width: 100%;
   }
 }

@@ -85,12 +85,23 @@ section.hidden {
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode #how-it-works {
+  background-color: #222;
+  color: #ffffff;
 }
 
 #how-it-works h2 {
   text-align: center;
   margin-bottom: 10px;
   font-size: 1.8rem;
+}
+
+ul, ol {
+  margin-left: 20px;
 }
 
 footer {
@@ -127,5 +138,10 @@ footer a:hover {
   }
   .gpa-group input {
     width: 100%;
+  }
+  
+  #how-it-works {
+    font-size: 0.9rem;
+    padding: 15px;
   }
 }

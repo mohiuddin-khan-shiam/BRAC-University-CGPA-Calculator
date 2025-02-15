@@ -19,7 +19,17 @@
   <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/favicon.ico" />
 </head>
 <body>
-  <header>
+  <!-- Skip link for improved keyboard navigation -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Message for users with JavaScript disabled -->
+  <noscript>
+    <p style="color: red; text-align: center;">
+      This site requires JavaScript for full functionality. Please enable JavaScript and refresh the page.
+    </p>
+  </noscript>
+
+  <header role="banner">
     <h1>CGPA Calculator</h1>
     <button 
       id="themeToggle" 
@@ -30,21 +40,17 @@
     </button>
   </header>
 
-  <main>
+  <main id="main-content" role="main">
     <!-- Intro Section with a larger explanation -->
     <section id="intro-section">
       <h2>Welcome to the Ultimate CGPA Calculator</h2>
       <p>
-        Our user-friendly tool makes it easy to calculate and update your CGPA. Whether you’re on a standard
-        4.0, 5.0, or 10.0 scale—or even a custom scale—this calculator helps you stay on top of your academic
-        performance.
+        Our user-friendly tool makes it easy to calculate and update your CGPA. Whether you’re on a standard 4.0, 5.0, or 10.0 scale—or even a custom scale—this calculator helps you stay on top of your academic performance.
       </p>
       <p>
-        Simply enter your current CGPA, completed credits, and the details of your current semester’s courses.
-        In just a few clicks, you’ll get an accurate, updated CGPA. No data is stored on our servers; everything
-        is calculated right in your browser for maximum privacy. Let’s get started!
+        Simply enter your current CGPA, completed credits, and the details of your current semester’s courses. In just a few clicks, you’ll get an accurate, updated CGPA. No data is stored on our servers; everything is calculated right in your browser for maximum privacy.
       </p>
-      <a href="#input-section" class="cta-button">Start Calculating</a>
+      <!-- The "Start Calculating" CTA button has been removed per the update request -->
     </section>
 
     <!-- Main Input Section -->
@@ -207,15 +213,13 @@
       <details>
         <summary>Will this CGPA match my official transcript?</summary>
         <p>
-          While this calculator uses standard formulas, official transcripts may vary based on your
-          institution's rounding or weighting policies.
+          While this calculator uses standard formulas, official transcripts may vary based on your institution's rounding or weighting policies.
         </p>
       </details>
       <details>
         <summary>Can I see my CGPA in multiple scales?</summary>
         <p>
-          Absolutely! Simply select a different scale from the dropdown (or enter a custom scale) 
-          and recalculate with your course details.
+          Absolutely! Simply select a different scale from the dropdown (or enter a custom scale) and recalculate with your course details.
         </p>
       </details>
       <details>
@@ -227,7 +231,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <p>
       Created by 
       <a 

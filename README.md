@@ -1,10 +1,8 @@
----
-
 # CGPA Calculator 🎓  
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green)](https://github.com/mohiuddin-khan-shiam/CGPA-Calculator/blob/main/LICENSE)
 
-A **CGPA Calculator** built with **HTML, CSS, and JavaScript** that helps students calculate their updated CGPA. It provides accurate results by allowing users to input either completed courses or completed credits and also supports different credit values for each course.
+A **CGPA Calculator** built with **HTML, CSS, and JavaScript** that helps students calculate their updated CGPA. It provides accurate results by allowing users to input completed credits and GPA for each course in the current semester, supporting different credit values for courses.
 
 🔗 **[Live Website](https://mohiuddin-khan-shiam.github.io/CGPA-Calculator/)**  
 
@@ -21,16 +19,15 @@ A **CGPA Calculator** built with **HTML, CSS, and JavaScript** that helps studen
 
 ## How to Use 🛠️  
 
-1. **Input your Current CGPA and Completed Courses or Credits:**  
-   - Enter either the number of completed courses or the total completed credits (not both).  
-   - If completed courses are provided, credits are calculated as `credits = courses × 3`.  
+1. **Input your Current CGPA and Completed Credits:**  
+   - Enter your current CGPA (between 0 and 4) and the total number of completed credits.  
 
 2. **Select the Number of Courses for the Current Semester:**  
    - Choose how many courses you are taking this semester.  
 
 3. **Enter GPA and Credit for Each Course:**  
-   - Provide the GPA (between 0 and 4) and the credit value for each course in the current semester.  
-   
+   - Provide the GPA (between 0 and 4) and the credit value for each course in the current semester. The default credit value is 3, but you can adjust it if your course has a different credit.  
+
 4. **Calculate Your CGPA:**  
    - The calculator will compute and display your updated CGPA based on the provided inputs.
 
@@ -86,13 +83,13 @@ To run this project locally:
 
 ---
 
-## License 📄  
+## License 🔖  
 
 This project is licensed under the **MIT License**. See the [LICENSE](https://github.com/mohiuddin-khan-shiam/CGPA-Calculator/blob/main/LICENSE) file for details.
 
 ---
 
-## Author 🧑‍💻  
+## Author 🤵🏻‍💻  
 
 **S. M. Mohiuddin Khan Shiam**  
 - 🔗 [Website](https://mohiuddin-khan-shiam.github.io/)  
@@ -110,3 +107,4 @@ Contributions, issues, and feature requests are welcome! Feel free to fork the r
 ### Star the repository ⭐ if you found it helpful! 😊  
 
 ---
+

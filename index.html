@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRACU CGPA Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+  <header>
+    <h1>BRAC University CGPA Calculator</h1>
+    <button id="themeToggle">Switch to Light Mode</button>
+  </header>
+
+  <main>
+    <section id="input-section">
+      <h2>Calculate Your CGPA</h2>
+      <form id="cgpaForm">
+        <label for="currentCgpa">Current CGPA (Before this semester):</label>
+        <input type="number" id="currentCgpa" step="0.01" min="0" max="4" required>
+
+        <label for="coursesCompleted">Courses Completed (Before this semester):</label>
+        <input type="number" id="coursesCompleted" min="0" required>
+
+        <label for="numOfCourses">Number of Courses This Semester:</label>
+        <select id="numOfCourses" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+
+        <button type="submit">Next</button>
+      </form>
+    </section>
+
+    <section id="result-section" class="hidden">
+      <h2>Your CGPA is: <span id="calculatedCgpa">0.00</span></h2>
+      <button id="recalculate">Start Over</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

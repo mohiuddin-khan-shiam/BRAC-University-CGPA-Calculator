@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
     const coursesCompleted = parseInt(document.getElementById("coursesCompleted").value);
     const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
+    const numOfCourses = parseInt(document.getElementById("numOfCourses").value);
 
     // Clear previous error messages
     clearErrorMessages();
@@ -47,8 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if (isNaN(numOfCourses) || numOfCourses < 1 || numOfCourses > 20) {
+      showError("numOfCoursesError", "Please enter a number between 1 and 20.");
+      return;
+    }
+
     gpaInputs.innerHTML = ""; // Clear previous GPA inputs
-    const numOfCourses = parseInt(document.getElementById("numOfCourses").value);
 
     // Dynamically generate GPA and Credit input fields for each course
     for (let i = 0; i < numOfCourses; i++) {

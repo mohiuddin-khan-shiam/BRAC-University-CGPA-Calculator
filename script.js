@@ -6,32 +6,51 @@ document.addEventListener("DOMContentLoaded", () => {
   const gpaInputs = document.getElementById("gpaInputs");
   const calculatedCgpa = document.getElementById("calculatedCgpa");
   const themeToggle = document.getElementById("themeToggle");
-  const formError = document.getElementById("formError");
 
-  let isDarkMode = true;
+  // Persistent Theme with localStorage
+  let isDarkMode = localStorage.getItem("theme") === "light-mode" ? false : true;
+  setTheme();
+
+  themeToggle.addEventListener("click", () => {
+    isDarkMode = !isDarkMode;
+    setTheme();
+    localStorage.setItem("theme", isDarkMode ? "dark-mode" : "light-mode");
+  });
+
+  function setTheme() {
+    document.body.className = isDarkMode ? "dark-mode" : "light-mode";
+    themeToggle.textContent = isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode";
+  }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
     const coursesCompleted = parseInt(document.getElementById("coursesCompleted").value);
     const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
 
+    // Clear previous error messages
+    clearErrorMessages();
+
+    if (isNaN(currentCgpa) || currentCgpa < 0 || currentCgpa > 4) {
+      showError("cgpaError", "CGPA must be between 0 and 4.");
+      return;
+    }
+
     if (isNaN(coursesCompleted) && isNaN(creditsCompleted)) {
-      formError.textContent = "Please enter either completed courses or completed credits.";
-      formError.style.display = "block";
+      showError("courseError", "Please enter either completed courses or completed credits.");
       return;
     }
 
     if (!isNaN(coursesCompleted) && !isNaN(creditsCompleted)) {
-      formError.textContent = "Please enter only one: either completed courses or completed credits.";
-      formError.style.display = "block";
+      showError("courseError", "Please enter only one: either completed courses or completed credits.");
       return;
     }
 
-    formError.style.display = "none";
-    gpaInputs.innerHTML = "";
-
+    gpaInputs.innerHTML = ""; // Clear previous GPA inputs
     const numOfCourses = parseInt(document.getElementById("numOfCourses").value);
+
+    // Dynamically generate GPA and Credit input fields for each course
     for (let i = 0; i < numOfCourses; i++) {
       const gpaGroup = document.createElement("div");
       gpaGroup.classList.add("gpa-group");
@@ -52,13 +71,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalCredits = creditsCompleted || parseInt(document.getElementById("coursesCompleted").value) * 3;
     let totalPoints = currentCgpa * totalCredits;
     let newCredits = 0;
+    let validInput = true;
 
     document.querySelectorAll(".gpa-group").forEach((group) => {
       const gpa = parseFloat(group.children[0].children[0].value);
       const credit = parseFloat(group.children[1].children[0].value);
-      totalPoints += gpa * credit;
-      newCredits += credit;
+
+      if (isNaN(gpa) || gpa < 0 || gpa > 4 || isNaN(credit) || credit <= 0) {
+        validInput = false;
+      } else {
+        totalPoints += gpa * credit;
+        newCredits += credit;
+      }
     });
+
+    if (!validInput) {
+      alert("Please enter valid GPA values (0-4) and positive credit values.");
+      return;
+    }
 
     const newCgpa = (totalPoints / (totalCredits + newCredits)).toFixed(2);
     calculatedCgpa.textContent = newCgpa;
@@ -71,12 +101,19 @@ document.addEventListener("DOMContentLoaded", () => {
     inputSection.classList.remove("hidden");
     resultSection.classList.add("hidden");
     form.reset();
-    gpaInputs.innerHTML = "";
+    gpaInputs.innerHTML = ""; // Clear GPA inputs for next calculation
   });
 
-  themeToggle.addEventListener("click", () => {
-    isDarkMode = !isDarkMode;
-    document.body.className = isDarkMode ? "dark-mode" : "light-mode";
-    themeToggle.textContent = isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode";
-  });
+  function showError(elementId, message) {
+    const errorElement = document.getElementById(elementId);
+    errorElement.textContent = message;
+    errorElement.classList.add("visible");
+  }
+
+  function clearErrorMessages() {
+    document.querySelectorAll(".error-message").forEach((el) => {
+      el.textContent = "";
+      el.classList.remove("visible");
+    });
+  }
 });

@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BRACU CGPA Calculator</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/favicon.ico">
 </head>
 <body class="dark-mode">
   <header>
-    <h1>BRAC University CGPA Calculator</h1>
+    <h1>BRACU CGPA Calculator</h1>
     <button id="themeToggle">Switch to Light Mode</button>
   </header>
 
@@ -17,10 +18,10 @@
       <h2>Calculate Your CGPA</h2>
       <form id="cgpaForm">
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
-        <input type="number" id="currentCgpa" step="0.01" min="0" max="4" required>
+        <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.5" required>
 
         <label for="coursesCompleted">Courses Completed (Before this semester):</label>
-        <input type="number" id="coursesCompleted" min="0" required>
+        <input type="number" id="coursesCompleted" min="0" placeholder="e.g., 30" required>
 
         <label for="numOfCourses">Number of Courses This Semester:</label>
         <select id="numOfCourses" required>
@@ -47,6 +48,14 @@
       <button id="recalculate">Start Over</button>
     </section>
   </main>
+
+  <footer>
+    <p>Created by <a href="https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/" target="_blank">S. M. Mohiuddin Khan Shiam</a></p>
+    <p>
+      <a href="https://github.com/mohiuddin-khan-shiam" target="_blank">GitHub</a> | 
+      <a href="https://mohiuddin-khan-shiam.github.io/" target="_blank">My Website</a>
+    </p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

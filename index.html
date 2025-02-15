@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGPA Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://mohiuddin-khan-shiam.github.io/favicon.ico">
+</head>
+<body>
+  <header>
+    <h1>CGPA Calculator</h1>
+    <button id="themeToggle">Switch to Light Mode</button>
+  </header>
+
+  <main>
+    <section id="input-section">
+      <h2>Calculate Your CGPA</h2>
+      <form id="cgpaForm">
+        <label for="currentCgpa">Current CGPA (Before this semester):</label>
+        <input type="number" id="currentCgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.5" required>
+        <p class="error-message" id="cgpaError"></p>
+
+        <label for="creditsCompleted">Credits Completed (Before this semester):</label>
+        <input type="number" id="creditsCompleted" min="1" max="150" placeholder="Enter completed credits" required>
+        <p class="error-message" id="creditError"></p>
+        <small class="help-text">Hint: You can find your total completed credits on your transcript or student portal.</small>
+
+        <label for="numOfCourses">Number of Courses This Semester:</label>
+        <input type="number" id="numOfCourses" min="1" max="20" value="4" required>
+        <p class="error-message" id="numOfCoursesError"></p>
+
+        <button type="submit">Next</button>
+      </form>
+    </section>
+
+    <section id="gpa-section" class="hidden">
+      <h2>Enter GPA and Credit for Each Course</h2>
+      <div id="gpaInputs"></div>
+      <button id="calculateCgpa">Calculate CGPA</button>
+    </section>
+
+    <section id="result-section" class="hidden">
+      <h2>Your CGPA is: <span id="calculatedCgpa">0.00</span></h2>
+      <button id="recalculate">Start Over</button>
+    </section>
+
+    <section id="how-it-works">
+      <h2>How It Works</h2>
+      <p>Your CGPA is calculated using the formula: <strong>Total Points / Total Credits</strong>.</p>
+      <p>Steps:</p>
+      <ol>
+        <li>We multiply the GPA of each course by its credit to get the total points for that course.</li>
+        <li>The sum of all points is divided by the sum of all credits to get your updated CGPA.</li>
+      </ol>
+      <p><strong>Example:</strong></p>
+      <p>If you have a current CGPA of 3.50 with 90 completed credits and you take 3 new courses with the following GPA and credit:</p>
+      <ul>
+        <li>Course 1: GPA 4.0, Credit 3</li>
+        <li>Course 2: GPA 3.7, Credit 2</li>
+        <li>Course 3: GPA 3.0, Credit 4</li>
+      </ul>
+      <p>Your updated CGPA would be: <strong>3.46</strong></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created by <a href="https://mohiuddin-khan-shiam.github.io/" target="_blank">S. M. Mohiuddin Khan Shiam</a></p>
+    <p>
+      <a href="https://github.com/mohiuddin-khan-shiam" target="_blank">GitHub</a> | 
+      <a href="https://www.linkedin.com/in/s-m-mohiuddin-khan-shiam/" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

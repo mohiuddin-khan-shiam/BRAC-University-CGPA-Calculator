@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const cgpaScale = parseInt(document.getElementById("cgpaScale").value);
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
     const creditsCompleted = parseInt(document.getElementById("creditsCompleted").value);
     const numOfCourses = parseInt(document.getElementById("numOfCourses").value);
@@ -32,13 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clear previous error messages
     clearErrorMessages();
 
-    if (isNaN(currentCgpa) || currentCgpa < 0 || currentCgpa > 4) {
-      showError("cgpaError", "CGPA must be between 0 and 4.");
+    if (isNaN(currentCgpa) || currentCgpa < 0 || currentCgpa > cgpaScale) {
+      showError("cgpaError", `CGPA must be between 0 and ${cgpaScale}.`);
       return;
     }
 
-    if (isNaN(creditsCompleted) || creditsCompleted < 1 || creditsCompleted > 150) {
-      showError("creditError", "Credits must be between 1 and 150.");
+    if (isNaN(creditsCompleted) || creditsCompleted < 1) {
+      showError("creditError", "Credits must be a positive number.");
       return;
     }
 
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const gpaGroup = document.createElement("div");
       gpaGroup.classList.add("gpa-group");
       gpaGroup.innerHTML = `
-        <label>Course ${i + 1} GPA: <input type="number" min="0" max="4" step="0.01" required></label>
+        <label>Course ${i + 1} GPA: <input type="number" min="0" max="${cgpaScale}" step="0.01" required></label>
         <label>Credit: <input type="number" min="0.5" step="0.5" value="3" required></label>
       `;
       gpaInputs.appendChild(gpaGroup);
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const gpa = parseFloat(group.children[0].children[0].value);
       const credit = parseFloat(group.children[1].children[0].value);
 
-      if (isNaN(gpa) || gpa < 0 || gpa > 4 || isNaN(credit) || credit <= 0) {
+      if (isNaN(gpa) || gpa < 0 || isNaN(credit) || credit <= 0) {
         validInput = false;
       } else {
         totalPoints += gpa * credit;
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (!validInput) {
-      alert("Please enter valid GPA values (0-4) and positive credit values.");
+      alert("Please enter valid GPA values and positive credit values.");
       return;
     }
 

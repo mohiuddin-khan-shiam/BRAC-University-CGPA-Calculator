@@ -20,12 +20,14 @@
   --max-width-form: 400px;
 }
 
+/* Basic Reset */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Body & Global Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -33,7 +35,6 @@ body {
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* Theme Specific Styles */
 body.dark-mode {
   background-color: var(--dark-bg);
   color: var(--dark-text);
@@ -44,17 +45,31 @@ body.light-mode {
   color: var(--light-text);
 }
 
+/* Skip Link for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s ease;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* Header */
 header {
   text-align: center;
   padding: 20px;
 }
-
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
-
 button {
   background-color: var(--primary-color);
   color: #fff;
@@ -65,7 +80,6 @@ button {
   border-radius: 5px;
   transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
-
 button:hover,
 button:focus {
   background-color: var(--primary-color-hover);
@@ -80,18 +94,18 @@ button:focus {
   margin: 20px auto;
   padding: 20px;
 }
-
 #intro-section h2 {
   font-size: 2rem;
   margin-bottom: 15px;
 }
-
 #intro-section p {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
+/* (Optional) CTA Button styles (not used since button removed) */
+/*
 .cta-button {
   display: inline-block;
   margin-top: 20px;
@@ -102,15 +116,15 @@ button:focus {
   text-decoration: none;
   transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
-
 .cta-button:hover,
 .cta-button:focus {
   background-color: var(--primary-color-hover);
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);
 }
+*/
 
-/* Main */
+/* Main Content */
 main {
   display: flex;
   flex-direction: column;
@@ -128,7 +142,6 @@ form,
   width: 100%;
   max-width: var(--max-width-form);
 }
-
 input,
 select {
   padding: 10px;
@@ -138,14 +151,13 @@ select {
   width: 100%;
   transition: border-color var(--transition-speed) ease;
 }
-
 input:focus,
 select:focus {
   outline: none;
   border-color: var(--primary-color);
 }
 
-/* Utility: Hide elements with .hidden class */
+/* Utility: Hide elements */
 .hidden {
   display: none;
 }
@@ -158,11 +170,9 @@ select:focus {
   margin-bottom: 10px;
   display: none;
 }
-
 .error-message.visible {
   display: block;
 }
-
 .help-text {
   font-size: 0.85rem;
   color: var(--help-text-color);
@@ -182,25 +192,16 @@ section.hidden {
   display: none;
   margin: 10px 0;
 }
-
 .success-message.visible {
   display: block;
 }
-
 .success {
   animation: pop 0.5s ease-out;
 }
-
 @keyframes pop {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
 /* How It Works & Example Section */
@@ -214,25 +215,21 @@ section.hidden {
   color: #333;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
-
 body.dark-mode #how-it-works {
   background-color: var(--section-bg-dark);
   color: var(--dark-text);
 }
-
 #how-it-works h2 {
   text-align: center;
   margin-bottom: 10px;
   font-size: 1.8rem;
 }
-
 .example-section {
   background-color: var(--example-bg-light);
   padding: 15px;
   border-radius: 8px;
   margin-top: 10px;
 }
-
 body.dark-mode .example-section {
   background-color: var(--example-bg-dark);
 }
@@ -251,13 +248,11 @@ footer {
   background-color: var(--footer-bg);
   color: var(--footer-text);
 }
-
 footer a {
   color: var(--primary-color);
   text-decoration: none;
   transition: color var(--transition-speed) ease;
 }
-
 footer a:hover,
 footer a:focus {
   color: var(--primary-color-hover);
@@ -270,12 +265,10 @@ footer a:focus {
   gap: 10px;
   align-items: center;
 }
-
 .gpa-group label {
   display: flex;
   flex-direction: column;
 }
-
 .gpa-group input {
   width: 100%;
 }
@@ -296,18 +289,15 @@ footer a:focus {
   color: #333;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
-
 body.dark-mode #faq-section {
   background-color: var(--section-bg-dark);
   color: var(--dark-text);
 }
-
 #faq-section h2 {
   text-align: center;
   margin-bottom: 15px;
   font-size: 1.8rem;
 }
-
 /* Details & Summary for FAQ */
 #faq-section details {
   margin-bottom: 10px;
@@ -318,16 +308,13 @@ body.dark-mode #faq-section {
   cursor: pointer;
   transition: background-color var(--transition-speed) ease;
 }
-
 body.dark-mode #faq-section details {
   background-color: #333;
 }
-
 #faq-section summary {
   font-weight: bold;
   outline: none;
 }
-
 /* Remove default marker and add a custom arrow */
 #faq-section summary::-webkit-details-marker {
   display: none;
@@ -341,7 +328,6 @@ body.dark-mode #faq-section details {
 #faq-section details[open] summary::before {
   transform: rotate(90deg);
 }
-
 #faq-section details p {
   margin: 10px 0 0 0;
   font-size: 0.95rem;
@@ -350,17 +336,15 @@ body.dark-mode #faq-section details {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  /* Stack the columns for smaller screens */
+  /* Stack the columns for course details */
   .gpa-group {
     grid-template-columns: 1fr;
   }
-
   #how-it-works,
   #faq-section {
     font-size: 0.9rem;
     padding: 15px;
   }
-
   input,
   select {
     width: 100%;

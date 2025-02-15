@@ -20,16 +20,19 @@
     <section id="input-section">
       <h2>Calculate Your CGPA</h2>
       <form id="cgpaForm" novalidate>
+        <!-- Merged CGPA Scale Selection -->
         <label for="cgpaScale">Select CGPA Scale:</label>
         <select id="cgpaScale">
-          <option value="4" selected>4.0 Scale</option>
+          <option value="4">4.0 Scale</option>
           <option value="5">5.0 Scale</option>
           <option value="10">10.0 Scale</option>
+          <option value="other">Other</option>
         </select>
-
-        <label for="customScale">Custom Scale (Optional):</label>
-        <input type="number" id="customScale" min="1" max="20" placeholder="e.g., 12" aria-describedby="customScaleError">
-        <p class="error-message" id="customScaleError" role="alert" aria-live="assertive"></p>
+        <div id="customScaleContainer" class="hidden">
+          <label for="customScale">Enter Custom Scale (1-20):</label>
+          <input type="number" id="customScale" min="1" max="20" placeholder="e.g., 12" aria-describedby="customScaleError">
+          <p class="error-message" id="customScaleError" role="alert" aria-live="assertive"></p>
+        </div>
 
         <label for="currentCgpa">Current CGPA (Before this semester):</label>
         <input type="number" id="currentCgpa" step="0.01" min="0" max="10" placeholder="e.g., 3.50" required aria-describedby="cgpaError">
@@ -64,7 +67,7 @@
       <h2>How It Works</h2>
       <p>Your CGPA is calculated using the formula: <strong>Total Points / Total Credits</strong>.</p>
       <ol>
-        <li>Select your CGPA scale (4.0, 5.0, 10.0, or enter a custom scale).</li>
+        <li>Select your CGPA scale by choosing a preset option or selecting "Other" to enter a custom scale.</li>
         <li>Enter your current CGPA and completed credits.</li>
         <li>Provide GPA, credit details, and optional course names for each course taken this semester.</li>
       </ol>

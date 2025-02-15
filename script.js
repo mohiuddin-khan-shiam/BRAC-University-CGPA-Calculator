@@ -27,8 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let cgpaScale = parseInt(document.getElementById("cgpaScale").value);
     const customScale = parseInt(document.getElementById("customScale").value);
-    if (!isNaN(customScale) && customScale > 0) {
+    if (!isNaN(customScale) && customScale > 0 && customScale <= 20) {
       cgpaScale = customScale;
+    } else if (!isNaN(customScale) && customScale > 20) {
+      showError("customScaleError", "Custom scale must be between 1 and 20.");
+      return;
     }
 
     const currentCgpa = parseFloat(document.getElementById("currentCgpa").value);
